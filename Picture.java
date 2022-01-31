@@ -1,74 +1,103 @@
 /**
- * This class represents a simple picture. You can draw the picture using
- * the draw method. But wait, there's more: being an electronic picture, it
- * can be changed. You can set it to black-and-white display and back to
- * colors (only after it's been drawn, of course).
- *
- * This class was written as an early example for teaching Java with BlueJ.
+ * The image that is being represented is a classic situation in soccer, a 
+ * penalty kick. These two people are playing together on a lovely day at their local soccer field.
+ * The kicker is preparing to take the shoot as the goalie hopes to save it! 
  * 
- * @author  Michael Kšlling and David J. Barnes
- * @version 2016.02.29
+ * @author  Damian Nunez
+ * @version 01.30.2022
  */
+
+// I editted the class to create my images.
+// I had to delete edit the fields.
 public class Picture
 {
-    private Square wall;
-    private Square window;
+    private Square field;
+    private Square sky;
+    private Square house;
     private Triangle roof;
+    private Person human;
     private Circle sun;
-    private boolean drawn;
 
     /**
      * Constructor for objects of class Picture
      */
+    
+    //I had to edit the constructor class to match my image.
     public Picture()
     {
-        wall = new Square();
-        window = new Square();
-        roof = new Triangle();  
-        sun = new Circle();
-        drawn = false;
+	field = new Square();
+        sky = new Square();
+        house = new Square();
+        roof = new Triangle();
+        human = new Person();
+        sun = new Circle();		
     }
 
     /**
      * Draw this picture.
      */
+    
+    /**
+     *I deleted and editted somethings to make my change. This was annoying because i had to keep playing with the draw() method
+     *to see how everything aligns.
+     */
+    
     public void draw()
-    {
-        if(!drawn) {
-            wall.moveHorizontal(-140);
-            wall.moveVertical(20);
-            wall.changeSize(120);
-            wall.makeVisible();
-            
-            window.changeColor("black");
-            window.moveHorizontal(-120);
-            window.moveVertical(40);
-            window.changeSize(40);
-            window.makeVisible();
-    
-            roof.changeSize(60, 180);
-            roof.moveHorizontal(20);
-            roof.moveVertical(-60);
-            roof.makeVisible();
-    
-            sun.changeColor("yellow");
-            sun.moveHorizontal(100);
-            sun.moveVertical(-40);
-            sun.changeSize(80);
-            sun.makeVisible();
-            drawn = true;
-        }
+    {  
+        field.changeColor("green");
+        field.moveHorizontal(-320);
+        field.changeSize(550);
+        field.makeVisible();
+
+        sky.changeColor("skyblue");
+        sky.moveHorizontal(-340);
+        sky.moveVertical(-550);
+        sky.changeSize(550);
+        sky.makeVisible();
+        
+        house.changeColor("red");
+        house.moveHorizontal(5);
+        house.moveVertical(-50);
+        house.changeSize(51);
+        house.makeVisible();
+        
+        roof.changeColor("blue");
+        roof.moveHorizontal(130);
+        roof.moveVertical(-100);
+        roof.changeSize(40,80);
+        roof.makeVisible();
+        
+        human.changeSize(49,26);
+        human.moveHorizontal(-25);
+        human.moveVertical(-77);
+        human.makeVisible();
+
+        sun.changeColor("yellow");
+        sun.moveHorizontal(-95);
+        sun.moveVertical(-100);
+        sun.changeSize(50);
+        sun.makeVisible();
+        
+        //I guess i have to put this in the bottom because it reads the scrypt in an order.
+        sun.slowMoveHorizontal(400);
+        human.slowMoveVertical (250);
     }
 
     /**
      * Change this picture to black/white display
+     * 
      */
     public void setBlackAndWhite()
     {
-        wall.changeColor("black");
-        window.changeColor("white");
-        roof.changeColor("black");
-        sun.changeColor("black");
+        if (sky!= null)   // only if it's painted already...
+        {
+            field.changeColor("black");
+            sky.changeColor("grey");
+            house.changeColor("white");
+            roof.changeColor("black");
+            human.changeColor("white");
+            sun.changeColor("grey");
+        }
     }
 
     /**
@@ -76,9 +105,14 @@ public class Picture
      */
     public void setColor()
     {
-        wall.changeColor("red");
-        window.changeColor("black");
-        roof.changeColor("green");
-        sun.changeColor("yellow");
+        if (sky!= null)   // only if it's painted already...
+        {
+            field.changeColor("green");
+            sky.changeColor("skyblue");
+            house.changeColor("red");
+            roof.changeColor("blue");
+            human.changeColor("black");
+            sun.changeColor("yellow");
+        }
     }
 }
